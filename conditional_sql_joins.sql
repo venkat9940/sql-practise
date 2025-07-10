@@ -24,3 +24,18 @@ join orders o
 on o.book_id = g.book_id
 and g.year_released >2015
 and o.quantity>1;
+
+-- Retrieve the book titles, their average ratings, order dates, and delivery statuses for books with a rating higher than 4.0 that have been delivered.(Joining all three tables)
+select 
+book_title,
+book_rating,
+order_date,
+delivery_status
+from goodreads g 
+join orders o
+on g.book_id = o.book_id
+and book_rating > 4.0
+join deliveries d 
+on o.order_id = d.order_id
+and delivery_status in('Delivered');
+
