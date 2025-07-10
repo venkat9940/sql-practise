@@ -13,3 +13,14 @@ from orders o
 join deliveries d 
 on o.order_id = d.order_id
 and d.delivery_status in ('Delivered','Shipped');
+
+-- Retrieve book titles, their authors, and the order dates for books released after 2015  and ordered in quantities greater than 1
+SELECT
+book_title,
+author,
+order_date
+from goodreads g 
+join orders o 
+on o.book_id = g.book_id
+and g.year_released >2015
+and o.quantity>1;
